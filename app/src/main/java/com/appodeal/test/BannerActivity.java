@@ -42,7 +42,7 @@ public class BannerActivity extends FragmentActivity {
         /* Enabling test mode:
         Appodeal.setTesting(true);
         */
-        /* Disabling networks for specific ad types
+        /* Disabling networks for specific ad types. Use before SDK initialization.
         Appodeal.disableNetwork(this, "startapp", Appodeal.BANNER );
         Appodeal.disableNetwork(this, "openx", Appodeal.BANNER | Appodeal.INTERSTITIAL );
         */
@@ -67,6 +67,8 @@ public class BannerActivity extends FragmentActivity {
         autoCacheBannerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // AutoCache enabled by default for Banner.
+                // You should disable automatic caching before SDK initialization using setAutoCache(adTypes, false);
                 Appodeal.setAutoCache(Appodeal.BANNER, isChecked);
                 Button bannerCacheButton = findViewById(R.id.bannerCacheButton);
                 if (isChecked) {
@@ -113,17 +115,21 @@ public class BannerActivity extends FragmentActivity {
     @Override
     public void onResume() {
         super.onResume();
+        //If your activity is recreated on screen rotation banner will disappear.
+        // To prevent that you need to call the following method in onResume of your activity:
         Appodeal.onResume(this, Appodeal.BANNER);
     }
 
     public void bannerShowButton(View v) {
         Spinner bannerPositionSpinner = findViewById(R.id.bannerPositionList);
         BannerPosition bannerPosition = (BannerPosition) bannerPositionSpinner.getSelectedItem();
-        boolean isShown = Appodeal.show(this, bannerPosition.getValue());
-        Toast.makeText(this, String.valueOf(isShown), Toast.LENGTH_SHORT).show();
+
+        //To display ad you need to call the following code in activity:
+        Appodeal.show(this, bannerPosition.getValue());
     }
 
     public void isBannerLoadedButton(View v) {
+        //Checking if interstitial is loaded
         if (Appodeal.isLoaded(Appodeal.BANNER)) {
             Toast.makeText(this, "true", Toast.LENGTH_SHORT).show();
         } else {
@@ -132,14 +138,17 @@ public class BannerActivity extends FragmentActivity {
     }
 
     public void bannerHideButton(View view) {
+        //Hiding banner
         Appodeal.hide(this, Appodeal.BANNER);
     }
 
     public void bannerDestroyButton(View view) {
+        //Destroying cached banner
         Appodeal.destroy(Appodeal.BANNER);
     }
 
     public void bannerCacheButton(View v) {
+        //Manual ad caching
         Appodeal.cache(this, Appodeal.BANNER);
     }
 }
