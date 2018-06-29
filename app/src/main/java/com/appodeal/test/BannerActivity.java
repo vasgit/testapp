@@ -36,32 +36,31 @@ public class BannerActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banner);
 
-        //*Advanced Features:*
-        //Enabling logging
+        // *Advanced Features:*
+        // Enabling logging
         Appodeal.setLogLevel(com.appodeal.ads.utils.Log.LogLevel.debug);
-        /* Enabling test mode:
-        Appodeal.setTesting(true);
-        */
-        /* Disabling networks for specific ad types. Use before SDK initialization.
-        Appodeal.disableNetwork(this, "startapp", Appodeal.BANNER );
-        Appodeal.disableNetwork(this, "openx", Appodeal.BANNER | Appodeal.INTERSTITIAL );
-        */
+        // Enabling test mode:
+        //Appodeal.setTesting(true);
 
-        //*Setting User Data*
+        // Disabling networks for specific ad types. Use before SDK initialization.
+        //Appodeal.disableNetwork(this, "startapp", Appodeal.BANNER );
+        //Appodeal.disableNetwork(this, "openx", Appodeal.BANNER | Appodeal.INTERSTITIAL );
+
+
+        // *Setting User Data*
         UserSettings userSettings = Appodeal.getUserSettings(this);
         userSettings.setAge(25);
         userSettings.setGender(UserSettings.Gender.MALE);
 
-        //*Banner Settings:*
-        /* Smart banners disables by default. To enable use:
-        Appodeal.setSmartBanners(true);
-        */
-        /* 728*90 banner disables by default. To enable use:
-        Appodeal.set728x90Banners(true);
-        */
-        /* Banner animation enabled by default. To disable use:
-        Appodeal.setBannerAnimation(false);
-        */
+        // *Banner Settings:*
+        // Smart banners disables by default. To enable use:
+        //Appodeal.setSmartBanners(true);
+
+        // 728*90 banner disables by default. To enable use:
+        //Appodeal.set728x90Banners(true);
+
+        // Banner animation enabled by default. To disable use:
+        //Appodeal.setBannerAnimation(false);
 
         CompoundButton autoCacheBannerSwitch = findViewById(R.id.autoCacheBannerSwitch);
         autoCacheBannerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -85,7 +84,7 @@ public class BannerActivity extends FragmentActivity {
 
     public void initBannerSdkButton(View view) {
 
-        //if use banner xml, set view id before SDK initialization
+        // if use banner xml, set view id before SDK initialization
         Appodeal.setBannerViewId(R.id.appodealBannerView);
 
         String appKey = getResources().getString(R.string.app_key);
@@ -115,7 +114,7 @@ public class BannerActivity extends FragmentActivity {
     @Override
     public void onResume() {
         super.onResume();
-        //If your activity is recreated on screen rotation banner will disappear.
+        // If your activity is recreated on screen rotation banner will disappear.
         // To prevent that you need to call the following method in onResume of your activity:
         Appodeal.onResume(this, Appodeal.BANNER);
     }
@@ -124,12 +123,12 @@ public class BannerActivity extends FragmentActivity {
         Spinner bannerPositionSpinner = findViewById(R.id.bannerPositionList);
         BannerPosition bannerPosition = (BannerPosition) bannerPositionSpinner.getSelectedItem();
 
-        //To display ad you need to call the following code in activity:
+        // To display ad you need to call the following code in activity:
         Appodeal.show(this, bannerPosition.getValue());
     }
 
     public void isBannerLoadedButton(View v) {
-        //Checking if interstitial is loaded
+        // Checking if interstitial is loaded
         if (Appodeal.isLoaded(Appodeal.BANNER)) {
             Toast.makeText(this, "true", Toast.LENGTH_SHORT).show();
         } else {
@@ -138,17 +137,17 @@ public class BannerActivity extends FragmentActivity {
     }
 
     public void bannerHideButton(View view) {
-        //Hiding banner
+        // Hiding banner
         Appodeal.hide(this, Appodeal.BANNER);
     }
 
     public void bannerDestroyButton(View view) {
-        //Destroying cached banner
+        // Destroying cached banner
         Appodeal.destroy(Appodeal.BANNER);
     }
 
     public void bannerCacheButton(View v) {
-        //Manual ad caching
+        // Manual ad caching
         Appodeal.cache(this, Appodeal.BANNER);
     }
 }
