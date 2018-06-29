@@ -53,8 +53,8 @@ public class BannerActivity extends FragmentActivity {
         userSettings.setGender(UserSettings.Gender.MALE);
 
         // *Banner Settings:*
-        // Smart banners disables by default. To enable use:
-        //Appodeal.setSmartBanners(true);
+        // Smart banners enabled by default. To disable use:
+        //Appodeal.setSmartBanners(false);
 
         // 728*90 banner disables by default. To enable use:
         //Appodeal.set728x90Banners(true);
