@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bannerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:textStyle="bold"
+        android:text="@string/btn_banner" />
+
+    <Switch
+        android:id="@+id/autoCacheBannerSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:checked="true"
+        android:text="@string/autoCacheBannerSwitch" />
+
+    <Button
+        android:id="@+id/initBannerSdkButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:onClick="initBannerSdkButton"
+        android:text="@string/initBannerSdkButton" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/isBannerLoadedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="isBannerLoadedButton"
+            android:text="@string/isBannerLoadedButton" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bannerCacheButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="bannerCacheButton"
+            android:text="@string/bannerCacheButton"
+            android:visibility="gone" />
+
+        <Spinner
+            android:id="@+id/bannerPositionList"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical" />
+
+        <Button
+            android:id="@+id/bannerShowButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="bannerShowButton"
+            android:text="@string/bannerShowButton" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bannerHideButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="bannerHideButton"
+        android:text="@string/bannerHideButton" />
+
+    <Button
+        android:id="@+id/bannerDestroyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="bannerDestroyButton"
+        android:text="@string/bannerDestroyButton" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_banner_xml" />
+
+        <com.appodeal.ads.BannerView
+            android:id="@+id/appodealBannerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
